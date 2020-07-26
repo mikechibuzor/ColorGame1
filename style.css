@@ -1,0 +1,346 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Bell MT";
+    font-size: 16px;
+}
+.header{
+    height: 20vh;
+    background: silver;
+    transition: all .5s linear;
+}
+.header h1{
+    text-align: center;
+    font-size: 2.5em;
+    line-height: 20vh;
+    letter-spacing: 3px;
+    text-shadow: 1px 2px 1px silver;
+}
+/*Sub Heading*/
+.subHead{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-between;
+    padding: .5em;
+}
+.subHead>*{
+    border: 1px solid black;
+}
+.difficulty{
+    flex: 0 0 calc(33.33% - .5em);
+    max-width: calc(33.33% - .5em);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.difficulty h2{
+    padding: .5em;
+}
+.difficulty .div{
+    display: flex;
+}
+.difficulty .div .mode{
+    padding: .5em;
+}
+.difficulty input, .difficulty label{
+    cursor: pointer;
+}
+.compChoice{
+    flex: 0 0 calc(33.33% - .5em);
+    max-width: calc(33.33% - .5em);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.compChoice h3{
+    padding: .3em;
+    text-align: center;
+    font-size: 110%;
+}
+.refresh{
+    flex: 0 0 calc(33.33% - .5em);
+    max-width: calc(33.33% - .5em);
+    display: grid;
+    align-content: center;
+    grid-column-gap: .5em;
+    grid-template-columns: 1fr 1fr;
+    padding: .5em;
+    grid-auto-rows: minmax(3em, auto) ;
+}
+.refresh>*{
+    border: 1px solid black;
+}
+.refresh .lifeBar{
+    grid-column: 1/2;
+    display: flex;
+    align-items: center;
+    padding: .3em;
+}
+.refresh .lifeBar .lbar{
+    flex: 0 0 12.33%;
+    height: 55%;
+    border-radius: 50%;
+    max-width: 12.33%;
+    border: 1px solid rgb(90, 151, 90);
+    background: green;
+    margin-left: .8em;
+}
+.refresh .pscore{
+    grid-column: 2/3;
+}
+/*End of Sub heading */
+
+/*instruction starts */
+.instruction{
+    padding: .4% 5%;
+    text-align: center;
+    display: grid;
+}
+.instruction h3{
+     align-self: center;
+     justify-self: center;
+     display: block;
+     cursor: pointer;
+     padding: 1em;
+     transition: all .3s linear;
+}
+.toggleInstructScale{
+    transform: scale(.9);
+}
+.instruction h3:hover{
+    transform: scale(.9);
+}
+.instruction .divv{
+    background: silver;
+    max-width: 300px;
+    margin: .1em auto;
+    padding: .3em;
+    border-radius: .5em .2em;
+    display: none;
+}
+.divv h4{
+    font-weight: normal;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.divv.show{
+    display: block;
+}
+/*End of instruction*/
+.display{
+    grid-column: 1/3;
+    display: grid;  
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;        
+    padding: 2% 5% 2%;
+}
+#pscore{
+    text-align: center;
+    line-height: 250%;
+}
+p{
+    padding: 5%;
+    height: 14em;
+    border-radius: 5px 15px;
+    cursor: pointer;
+    transition: all .5s linear;
+    text-align: center;
+    display: grid;
+    color: transparent;
+    align-content: center;
+}
+p:active{
+    transform: scale(0.97);
+    transition: all .3s linear;
+    color: white;
+}
+p.inactive{
+    opacity: 0;
+    pointer-events: none;
+}
+.box-shadow{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    box-shadow: 15px 15px 15px rgba(225, 225, 225, .3),
+                inset -15px -15px 15px rgba(0, 0, 0, .3),
+                inset -10px -10px 10px rgba(0, 0, 0, .6),
+                inset -5px -5px 5px rgba(0, 0, 0, .9);
+}
+
+/*star of Game Over overlay and its inner elements styling*/
+.game-over-overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    transition: display .3s linear;
+}
+
+.game-over-overlay .game-over{
+    border: 1px solid #eee;
+    width: 20%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-800px);
+    background: white;
+    border-radius: .5em;
+    opacity: 0;
+    animation: game-over 3s linear forwards;
+}
+.game-over-overlay .game-over .button{
+    padding: .5em;
+    outline: none;
+    border: 1px solid white;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: .5em 0 0 0 ;
+    margin-top: .53em;
+    position: relative;
+    font-family: "Bell MT", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow:   4px 4px 8px rgba(0, 0, 0, .3),
+                  2px 2px 4px rgba(0, 0, 0, .6);              
+}
+.game-over-overlay .game-over .button:hover{
+    color: white;
+}
+.game-over-overlay .game-over .button::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-radius: 0 0 50% 50%;
+    height: 0%;
+    background: #3498db;
+    z-index: -1;
+    transition: 0.8s;
+}
+.game-over-overlay .game-over .button:hover::before{
+    height: 180%;
+}
+/* Animation for Game Over */
+@keyframes game-over{
+    50%{
+        transform: translateY(50px);
+        opacity: .65;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+        box-shadow: -4px 4px 15px rgba(0, 0, 0, .7);
+    }
+}
+/*end of Game Over overlay and its inner elements styling*/
+
+
+/*Footer Design*/
+
+.footer{
+    background: silver;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3.3em;
+}
+
+/*for Responsive Web Design*/
+@media screen and (max-width: 1024px){
+    .display{
+        grid-row-gap: 25px;
+        grid-column-gap: 25px;
+    }
+    p{
+        height: 20vh;
+    }
+    .game-over-overlay .game-over{
+        width: 40%;
+    }
+}
+@media screen and (min-width: 1024px ){
+    .footer{
+        margin-top: 16em;
+    }
+}
+@media screen and (max-width: 830px){
+    .display{
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: 15px;
+        grid-column-gap: 15px;
+    }
+    .display div.game-over{
+        grid-column: 1/3;
+    }
+    p{
+        height: 10em;
+    }
+    .difficulty{
+        flex: 0 0 calc(50% - .5em);
+        max-width: calc(50% - .5em);
+    }
+    .compChoice{
+        flex: 0 0 calc(50% - .5em);
+        max-width: calc(50% - .5em);
+    }
+    .refresh{
+        flex: 0 0 calc(100% - .5em);
+        max-width: calc(100% - .5em);
+        margin-top: .5em;
+    }
+}
+@media screen and (width: 768px){
+    .refresh .lifeBar .lbar{
+        height: 85%;
+        max-width: 10%;
+    }
+}
+@media screen and (max-width: 568px){
+    .header{
+        height: 15vh;
+    }
+    .header h1{
+        font-size: 2em;
+        line-height: 15vh;
+    }
+    .difficulty h2,label, .compChoice h3{
+        font-size: .9em;
+    }
+    .difficulty .div{
+        height: 2.5em;
+    }
+    .display{
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: 15px;
+        grid-column-gap: 15px;
+    }
+    .display div.game-over{
+        grid-column: 1/3;
+    }
+    p{
+        height: 7em;
+    }
+    .compChoice h3{
+        padding: .3em;
+        text-align: center;
+        font-size: 70%;
+    }
+    .game-over-overlay .game-over{
+        width: 70%;
+    }
+}

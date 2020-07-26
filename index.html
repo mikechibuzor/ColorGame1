@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Color Game</title>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Color Game</h1>
+        </div>
+        <div class="subHead">
+            <div class="difficulty">
+                <h2>Difficulty:</h2>
+                <div class="div">
+                    <div class="easyMode mode">
+                        <input type="radio" name="difficulty" id="easy"/>
+                        <label for="easy">E</label>
+                    </div>
+                    <div class="mediumMode mode">
+                        <input type="radio" name="difficulty" checked id="medium"/>
+                        <label for="medium">M</label>
+                    </div>
+                    <div class="hardMode mode">
+                        <input type="radio" name="difficulty" id="hard"/>
+                        <label for="hard">H</label>
+                    </div>
+                </div>
+            </div>
+            <div class="compChoice">
+                <h3></h3>
+            </div>
+            <div class="refresh player-score">
+                <div class="lifeBar">
+                    <h3>Life:</h3>
+                    <div class="lbar bar1"></div>
+                    <div class="lbar bar2"></div>
+                    <div class="lbar bar3"></div>
+                </div>
+                <div class="pscore">
+                    <h3 id="pscore"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="instruction">
+            <h3>&dArr; Instruction &dArr;</h3>
+            <div class="divv">
+                <h4>The computer randomly generates a rgb value, you are to click the right color of that value. everytime you guess wrong, you
+                    lose a life. when you guess right however, you earn 5 points. <br />
+                    <span>Goodluck!</span>
+                </h4>
+            </div>
+        </div>
+        <div class="display"></div>
+        <div class="footer">
+            <h4> I.Chi</h4>
+            <!-- <h5>&copy; 2020</h5> -->
+        </div>
+        <div class="game-over-overlay">
+            <div class="game-over">
+                <h1>Game Over</h1>
+                <h3>your score: </h3>
+                <div class="button">Play again?</div>
+            </div> 
+        </div>
+    </div>
+    <script src="colorGame.js"></script>
+</body>
+</html>
